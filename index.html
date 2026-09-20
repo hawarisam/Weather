@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A simple live weather dashboard for Detroit.">
+  <title>Northline Weather</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="./" aria-label="Northline Weather home">
+        <span class="brand-mark" aria-hidden="true">+</span>
+        <span>Northline</span>
+      </a>
+      <span class="live-status"><span class="status-dot" aria-hidden="true"></span>Live conditions</span>
+    </header>
+
+    <section class="weather-layout" aria-labelledby="page-title">
+      <div class="intro-column">
+        <p class="eyebrow">Local forecast / live conditions</p>
+        <h1 id="page-title">The sky,<br><em>right now.</em></h1>
+        <p class="intro-copy">A clear read on the weather, updated whenever you check in.</p>
+        <div class="location-line">
+          <span class="pin" aria-hidden="true">+</span>
+          <label class="sr-only" for="location-select">Choose a location</label>
+          <select id="location-select" aria-label="Choose a location">
+            <option value="detroit">Detroit, Michigan</option>
+            <option value="draper">Draper, Utah</option>
+          </select>
+        </div>
+      </div>
+
+      <article class="weather-card" aria-live="polite">
+        <div class="card-topline">
+          <span id="condition-label">Current conditions</span>
+          <span id="updated-label">Updating...</span>
+        </div>
+
+        <div class="temperature-row">
+          <span id="temperature" class="temperature">--</span>
+          <div class="unit-control" role="group" aria-label="Temperature unit">
+            <button class="unit-button active" data-unit="celsius" type="button" aria-pressed="true">C</button>
+            <button class="unit-button" data-unit="fahrenheit" type="button" aria-pressed="false">F</button>
+          </div>
+        </div>
+
+        <div class="weather-summary">
+          <span class="weather-icon" id="weather-icon" aria-hidden="true">...</span>
+          <div>
+            <strong id="weather-description">Reading the sky</strong>
+            <span id="weather-detail">Temperature at 2 meters</span>
+          </div>
+        </div>
+
+        <div class="card-footer">
+          <span id="latitude">42.33 N</span>
+          <span class="footer-divider" aria-hidden="true"></span>
+          <span id="longitude">83.05 W</span>
+          <button class="refresh-button" id="refresh-button" type="button" aria-label="Refresh weather data" title="Refresh weather data">↻</button>
+        </div>
+        <p class="error-message" id="error-message" role="alert" hidden>We couldn't reach the forecast. Try again.</p>
+      </article>
+    </section>
+
+    <footer class="site-footer">
+      <span>Powered by Open-Meteo</span>
+      <span id="footer-location">Updated from Detroit</span>
+    </footer>
+  </main>
+</body>
+</html>
